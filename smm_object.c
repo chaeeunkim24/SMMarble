@@ -22,7 +22,7 @@
 #define SMMNODE_TYPE_FOODCHANCE          5
 #define SMMNODE_TYPE_FESTIVAL            6
 
-static char smmNodeName[MAX_NODETYPE][MAX_CHARNAME] = {
+static char smmNodeName[MAX_NODETYPE][MAX_CHARNAME] = { //MAX_CHARNAME is string number? 
        "lecture",
        "restaurant",
        "laboratory",
@@ -44,9 +44,9 @@ static int  smm_energy[MAX_NODENR];
 int smmObj_genNode(char* name, int type, int credit, int energy)
 {
      strcpy(smm_name[smm_nodeNr], name);
-     smm_type[smm_nodeNr]   =    type;
-     smm_credit[smm_nodeNr] =    credit;
-     smm_energy[smm_nodeNr] =    energy;
+     smm_type[smm_nodeNr]   =     type;
+     smm_credit[smm_nodeNr] =     credit;
+     smm_energy[smm_nodeNr] =     energy;
      
      smm_nodeNr++;
      
@@ -62,13 +62,19 @@ char* smmObj_getName(int node_nr)
       return (smm_name[node_nr]);      
 }
 
-char smmObj_getType(int node_nr)
+int smmObj_getType(int node_nr)
 {
      return (smm_type[node_nr]);
 }
-char smmObj_getTypeName(int node_nr)
+
+int smmObj_getEnergy(int node_nr)
 {
-     return (smmNodeName[smm_type[node_nr]});
+     return (smm_energy[node_nr]);
+}
+
+char* smmObj_getNodeName(int node_type)
+{
+     return (smmNodeName[node_type});  //string return
 }
 
 
